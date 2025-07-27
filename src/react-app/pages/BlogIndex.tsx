@@ -152,53 +152,6 @@ function BlogIndex() {
             </div>
           ) : (
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-              {/* Create Blog Form */}
-              <div className="create-blog-container" style={{ marginBottom: "40px", width: "100%" }}>
-                <h2>创建新文章</h2>
-                
-                {createError && <div className="error-message">{createError}</div>}
-                
-                <form onSubmit={handleCreateBlog} className="create-blog-form">
-                  <div className="form-group">
-                    <input
-                      type="text"
-                      value={title}
-                      onChange={(e) => setTitle(e.target.value)}
-                      className="form-input"
-                      placeholder="输入文章标题"
-                    />
-                  </div>
-                  
-                  <div className="form-group">
-                    <input
-                      type="text"
-                      value={image}
-                      onChange={(e) => setImage(e.target.value)}
-                      className="form-input"
-                      placeholder="图片URL (可选)"
-                    />
-                  </div>
-                  
-                  <div className="form-group">
-                    <textarea
-                      value={content}
-                      onChange={(e) => setContent(e.target.value)}
-                      className="form-textarea"
-                      placeholder="写下您的文章内容..."
-                      rows={4}
-                    />
-                  </div>
-                  
-                  <button 
-                    type="submit" 
-                    disabled={creating}
-                    className="submit-button"
-                  >
-                    {creating ? "发布中..." : "发布文章"}
-                  </button>
-                </form>
-              </div>
-              
               {/* Blog List */}
               {blogs.length === 0 ? (
                 <div className="no-blogs">
@@ -269,6 +222,53 @@ function BlogIndex() {
                   ))}
                 </div>
               )}
+              
+              {/* Create Blog Form - Moved to bottom */}
+              <div className="create-blog-container" style={{ marginTop: "40px", width: "100%" }}>
+                <h2>创建新文章</h2>
+                
+                {createError && <div className="error-message">{createError}</div>}
+                
+                <form onSubmit={handleCreateBlog} className="create-blog-form">
+                  <div className="form-group">
+                    <input
+                      type="text"
+                      value={title}
+                      onChange={(e) => setTitle(e.target.value)}
+                      className="form-input"
+                      placeholder="输入文章标题"
+                    />
+                  </div>
+                  
+                  <div className="form-group">
+                    <input
+                      type="text"
+                      value={image}
+                      onChange={(e) => setImage(e.target.value)}
+                      className="form-input"
+                      placeholder="图片URL (可选)"
+                    />
+                  </div>
+                  
+                  <div className="form-group">
+                    <textarea
+                      value={content}
+                      onChange={(e) => setContent(e.target.value)}
+                      className="form-textarea"
+                      placeholder="写下您的文章内容..."
+                      rows={4}
+                    />
+                  </div>
+                  
+                  <button 
+                    type="submit" 
+                    disabled={creating}
+                    className="submit-button"
+                  >
+                    {creating ? "发布中..." : "发布文章"}
+                  </button>
+                </form>
+              </div>
             </div>
           )}
         </div>
