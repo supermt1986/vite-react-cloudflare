@@ -5,6 +5,11 @@ declare namespace Cloudflare {
 	interface Env {
 	}
 }
+// worker-configuration.d.ts
+interface Env {
+  DB: D1Database;
+}
+
 interface Env extends Cloudflare.Env {}
 
 // Begin runtime types
